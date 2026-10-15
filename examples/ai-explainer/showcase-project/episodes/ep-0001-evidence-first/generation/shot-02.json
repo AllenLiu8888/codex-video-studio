@@ -1,0 +1,36 @@
+{
+  "record_kind": "generated_asset",
+  "prompt": {
+    "path": "episodes/ep-0001-evidence-first/prompts/shot-02.txt",
+    "sha256": "db3be67733bddafa9be1708c1e5f05c8e2f2de59768d691a87142f6bfbf46d25"
+  },
+  "references": [
+    {
+      "path": "brand/references/character-master.png",
+      "sha256": "811091d20d7220579125b7bace4916cad2949daa872ed4c7f59e88ac67fd7f13",
+      "role_in_this_image": "identity and material"
+    }
+  ],
+  "generation": {
+    "tool": "Codex built-in imagegen",
+    "backend_model": null,
+    "numeric_seed": null,
+    "source_record": "episodes/ep-0001-evidence-first/generation/shot-02-source-generation.json"
+  },
+  "output": {
+    "path": "episodes/ep-0001-evidence-first/assets/shot-02.png",
+    "sha256": "a819ceb3d579cbab9ee9a900a6835464a6dde1e79d49d2e2187ac1e1ef85bcc8",
+    "file_pixels": [
+      940,
+      1672
+    ]
+  },
+  "review": {
+    "reviewer": "Codex subagent /root/public_skills",
+    "assistant_result": "assistant_visual_pass",
+    "veto_findings": [],
+    "human_acceptance": "pending",
+    "response_file": "reviews/visual-plan-agent.md",
+    "response_sha256": "c0f59a23d6d34ac7a4b99a435342d34f307047b33ce19c1a502a2a398048803b"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "record_kind": "template_not_a_generated_asset",
+  "episode": null,
+  "shot_id": null,
+  "candidate_id": null,
+  "status": "planned",
+  "seed_snapshot": null,
+  "task": {
+    "purpose": null,
+    "aspect_ratio": null,
+    "view_action": null
+  },
+  "references": [
+    {
+      "id": null,
+      "path": null,
+      "sha256": null,
+      "role_in_this_image": null
+    }
+  ],
+  "prompt": {
+    "path": null,
+    "sha256": null
+  },
+  "generation": {
+    "tool": null,
+    "backend_model": null,
+    "numeric_seed": null,
+    "actual_settings": {},
+    "generation_id": null,
+    "generated_at": null,
+    "external_review_record": null
+  },
+  "output": {
+    "path": null,
+    "sha256": null,
+    "file_pixels": null,
+    "native_pixels_if_known": null,
+    "operation": null,
+    "derived_from": null
+  },
+  "review": {
+    "reviewer": null,
+    "reviewed_at": null,
+    "identity": null,
+    "symbols": null,
+    "style": null,
+    "anatomy_interaction": null,
+    "composition": null,
+    "veto_findings": null,
+    "assistant_result": null,
+    "human_score": null,
+    "human_acceptance": null,
+    "revision_notes": null,
+    "selected_for_shot": false,
+    "rendered_crop_checked": false,
+    "distinctive_features": null
+  }
+}

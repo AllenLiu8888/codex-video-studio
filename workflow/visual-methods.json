@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "methods": {
+    "illustration": {
+      "label": "Brand illustration",
+      "source_types": [
+        "generated"
+      ],
+      "asset_kinds": [
+        "generated",
+        "prepared_image"
+      ],
+      "complex_motion": false,
+      "readiness": "production"
+    },
+    "photo_collage": {
+      "label": "Licensed photo collage",
+      "source_types": [
+        "real_photo",
+        "archive"
+      ],
+      "asset_kinds": [
+        "commons",
+        "prepared_image"
+      ],
+      "complex_motion": false,
+      "readiness": "production_with_layout_review"
+    },
+    "annotated_static": {
+      "label": "静态标注/剖面",
+      "source_types": [
+        "diagram",
+        "real_photo",
+        "archive",
+        "generated"
+      ],
+      "asset_kinds": [
+        "prepared_image",
+        "commons",
+        "generated"
+      ],
+      "complex_motion": false,
+      "readiness": "manual_layout"
+    },
+    "comparison_static": {
+      "label": "静态对照",
+      "source_types": [
+        "diagram",
+        "real_photo",
+        "archive",
+        "generated"
+      ],
+      "asset_kinds": [
+        "prepared_image"
+      ],
+      "complex_motion": false,
+      "readiness": "manual_layout"
+    },
+    "paper_steps": {
+      "label": "数字纸片分步",
+      "source_types": [
+        "generated",
+        "diagram",
+        "archive"
+      ],
+      "asset_kinds": [
+        "video"
+      ],
+      "complex_motion": true,
+      "readiness": "short_sample_required"
+    },
+    "local_motion": {
+      "label": "插画局部变化",
+      "source_types": [
+        "generated"
+      ],
+      "asset_kinds": [
+        "video"
+      ],
+      "complex_motion": true,
+      "readiness": "short_sample_required"
+    },
+    "observational_video": {
+      "label": "真实观察视频",
+      "source_types": [
+        "real_video"
+      ],
+      "asset_kinds": [
+        "video"
+      ],
+      "complex_motion": false,
+      "readiness": "short_sample_required"
+    },
+    "brand_endcard": {
+      "label": "品牌落版",
+      "source_types": [
+        "layout"
+      ],
+      "asset_kinds": [
+        "prepared_image"
+      ],
+      "complex_motion": false,
+      "readiness": "production_with_asset_review"
+    }
+  }
+}

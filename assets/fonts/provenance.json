@@ -1,0 +1,20 @@
+[
+  {
+    "file": "NotoSerifSC-VF.ttf",
+    "original_name": "NotoSerifSC[wght].ttf",
+    "source": "https://github.com/google/fonts/blob/main/ofl/notoserifsc/NotoSerifSC[wght].ttf",
+    "download_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/notoserifsc/NotoSerifSC%5Bwght%5D.ttf",
+    "git_blob_sha": "eab063faf229160a52d3760f5555150e4eb9e5bf",
+    "sha256": "050080d9255a86808f2945bffac582b31ef32bc36411ce29563b4961670c66f9",
+    "bytes": 25125512
+  },
+  {
+    "file": "OFL.txt",
+    "original_name": "OFL.txt",
+    "source": "https://github.com/google/fonts/blob/main/ofl/notoserifsc/OFL.txt",
+    "download_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/notoserifsc/OFL.txt",
+    "git_blob_sha": "94d1bf7b52481343e2983fb7751e8b7abe1ea07b",
+    "sha256": "5e0da210fb04058a8c0087985d2d456b931c2579811a49655721d3cf0c36b6d6",
+    "bytes": 4350
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "name": "未见实验室 · Unseen Lab",
+  "palette": {
+    "dark": "#17283B",
+    "light": "#F7F4EE",
+    "accent": "#E5856B"
+  },
+  "subtitle": {
+    "font_file": "auto",
+    "size_ratio": 0.044,
+    "dark_text": "#17283B",
+    "light_text": "#F7F4EE"
+  },
+  "status": "fictional_public_example"
+}

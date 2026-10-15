@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "status": "ready_for_synthesis",
+  "operation": "review_existing_local_audio_import",
+  "reviewer": {
+    "mode": "subagent",
+    "task_id": "/root/public_skills",
+    "response_file": "audio/agent-response.md",
+    "response_sha256": "d0a19a23b66bdd6f158bde321b87cd6d27d098d7832b08796c4cd96eb9f99041"
+  },
+  "narration_sha256": "b5def6ec441e9ebb3f7061de797b990d94688153e45b929c43b75a2d83d153b7",
+  "request_text_sha256": "5d93ea02135a22d82ded9abeef2c6af7d79db3e2cf23cc0374e2df3c36024652",
+  "speech": {
+    "provider": "local",
+    "wav": "episodes/ep-0001-evidence-first/audio/narration.wav",
+    "timestamps": "episodes/ep-0001-evidence-first/audio/native-subtitles.json",
+    "voice_label": "Published synthetic example; MiniMax provenance retained separately"
+  },
+  "model_requirements": {
+    "source_url": "https://platform.minimax.cn/docs/api-reference/speech-t2a-http",
+    "checked_on": "2026-10-16",
+    "notes": "Existing local WAV plus native words; review validates import, not a new synthesis or subjective listening. Original MiniMax parameters are retained in audio-provenance.json."
+  },
+  "reasoning_summary": "Four semantic sentences; three 0.60s sentence pauses and two 0.35s clause pauses; actual native timestamps drive editing. Independent report verified text, hashes, timing and provenance.",
+  "listening_status": "not_performed",
+  "human_acceptance": "pending",
+  "local_audio_sha256": {
+    "episodes/ep-0001-evidence-first/audio/narration.wav": "a063cedcfe037aeb54a257e498c64c822c0cec1a2c435efb1a8643b1ea2b184f",
+    "episodes/ep-0001-evidence-first/audio/native-subtitles.json": "12fec489c61e6d4b7b8c3155651710413c8b36ec8f3c9bedff1de210f30095fa"
+  }
+}

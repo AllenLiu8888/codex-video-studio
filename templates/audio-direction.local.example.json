@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "status": "pending_audio_agent",
+  "reviewer": {
+    "mode": "subagent",
+    "task_id": "__ACTUAL_AUDIO_AGENT_TASK_ID__",
+    "response_file": "audio/agent-response.md",
+    "response_sha256": "__ACTUAL_RESPONSE_FILE_SHA256__"
+  },
+  "narration_sha256": "__LOCKED_NARRATION_SHA256__",
+  "request_text_sha256": "__ACTUAL_REQUEST_TEXT_SHA256__",
+  "speech": {
+    "provider": "local",
+    "wav": "episodes/ep-0001-your-topic/audio/recording.wav",
+    "timestamps": "episodes/ep-0001-your-topic/audio/native-words.json"
+  },
+  "model_requirements": {
+    "source_url": "docs/runtime.md",
+    "checked_on": "__ACTUAL_CHECK_DATE__",
+    "notes": "Local audio import has no synthesis model or voice ID. Use the current local importer contract: an actual WAV plus matching word timestamps, or replace speech with clips matching every caption in order. Do not include both modes. No guessed whole-recording timestamps."
+  },
+  "reasoning_summary": "__ACTUAL_SEMANTIC_GROUPS_PAUSES_PRONUNCIATION_AND_AUDIO_REVIEW_FINDINGS__",
+  "listening_status": "pending_actual_listening",
+  "local_audio_sha256": null,
+  "local_audio_note": "Unreviewed template only. Replace speech with the exact episode speech configuration. After reviewing the actual audio and timestamps, set local_audio_sha256 to the complete project-relative path -> SHA-256 map from local_audio.source_signature(speech, root, require_exists=True): both WAV and timestamp JSON for full-recording mode, or every clip for clips mode. Preserve the actual reviewer response and findings; change status only after that review really occurred, then bind episode.audio_direction.request_text_sha256 and review_sha256. A hash match alone does not establish listening or human acceptance."
+}

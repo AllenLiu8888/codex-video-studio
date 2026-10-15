@@ -1,0 +1,341 @@
+[
+  {
+    "file": "frame-001.jpg",
+    "frame": 0,
+    "time": 0.0,
+    "labels": [
+      "start"
+    ]
+  },
+  {
+    "file": "frame-002.jpg",
+    "frame": 16,
+    "time": 0.64,
+    "labels": [
+      "C01 in 一个回答说得流畅"
+    ]
+  },
+  {
+    "file": "frame-003.jpg",
+    "frame": 35,
+    "time": 1.4,
+    "labels": [
+      "C01 mid 一个回答说得流畅"
+    ]
+  },
+  {
+    "file": "frame-004.jpg",
+    "frame": 54,
+    "time": 2.16,
+    "labels": [
+      "C01 out 一个回答说得流畅"
+    ]
+  },
+  {
+    "file": "frame-005.jpg",
+    "frame": 64,
+    "time": 2.56,
+    "labels": [
+      "C02 in 就一定可信吗？"
+    ]
+  },
+  {
+    "file": "frame-006.jpg",
+    "frame": 70,
+    "time": 2.8,
+    "labels": [
+      "S01 middle"
+    ]
+  },
+  {
+    "file": "frame-007.jpg",
+    "frame": 84,
+    "time": 3.36,
+    "labels": [
+      "C02 mid 就一定可信吗？"
+    ]
+  },
+  {
+    "file": "frame-008.jpg",
+    "frame": 104,
+    "time": 4.16,
+    "labels": [
+      "C02 out 就一定可信吗？"
+    ]
+  },
+  {
+    "file": "frame-009.jpg",
+    "frame": 135,
+    "time": 5.4,
+    "labels": [
+      "cut 01"
+    ]
+  },
+  {
+    "file": "frame-010.jpg",
+    "frame": 140,
+    "time": 5.6,
+    "labels": [
+      "cut 01"
+    ]
+  },
+  {
+    "file": "frame-011.jpg",
+    "frame": 145,
+    "time": 5.8,
+    "labels": [
+      "C03 in 生成式人工智能",
+      "cut 01"
+    ]
+  },
+  {
+    "file": "frame-012.jpg",
+    "frame": 159,
+    "time": 6.36,
+    "labels": [
+      "C03 mid 生成式人工智能"
+    ]
+  },
+  {
+    "file": "frame-013.jpg",
+    "frame": 173,
+    "time": 6.92,
+    "labels": [
+      "C03 out 生成式人工智能"
+    ]
+  },
+  {
+    "file": "frame-014.jpg",
+    "frame": 183,
+    "time": 7.32,
+    "labels": [
+      "C04 in 也会给出听起来合理"
+    ]
+  },
+  {
+    "file": "frame-015.jpg",
+    "frame": 212,
+    "time": 8.48,
+    "labels": [
+      "C04 mid 也会给出听起来合理"
+    ]
+  },
+  {
+    "file": "frame-016.jpg",
+    "frame": 237,
+    "time": 9.48,
+    "labels": [
+      "S02 middle"
+    ]
+  },
+  {
+    "file": "frame-017.jpg",
+    "frame": 240,
+    "time": 9.6,
+    "labels": [
+      "C04 out 也会给出听起来合理"
+    ]
+  },
+  {
+    "file": "frame-018.jpg",
+    "frame": 250,
+    "time": 10.0,
+    "labels": [
+      "C05 in 实际上错误的信息。"
+    ]
+  },
+  {
+    "file": "frame-019.jpg",
+    "frame": 274,
+    "time": 10.96,
+    "labels": [
+      "C05 mid 实际上错误的信息。"
+    ]
+  },
+  {
+    "file": "frame-020.jpg",
+    "frame": 297,
+    "time": 11.88,
+    "labels": [
+      "C05 out 实际上错误的信息。"
+    ]
+  },
+  {
+    "file": "frame-021.jpg",
+    "frame": 329,
+    "time": 13.16,
+    "labels": [
+      "cut 02"
+    ]
+  },
+  {
+    "file": "frame-022.jpg",
+    "frame": 334,
+    "time": 13.36,
+    "labels": [
+      "cut 02"
+    ]
+  },
+  {
+    "file": "frame-023.jpg",
+    "frame": 339,
+    "time": 13.56,
+    "labels": [
+      "C06 in 遇到重要的事实",
+      "cut 02"
+    ]
+  },
+  {
+    "file": "frame-024.jpg",
+    "frame": 352,
+    "time": 14.08,
+    "labels": [
+      "C06 mid 遇到重要的事实"
+    ]
+  },
+  {
+    "file": "frame-025.jpg",
+    "frame": 364,
+    "time": 14.56,
+    "labels": [
+      "C06 out 遇到重要的事实"
+    ]
+  },
+  {
+    "file": "frame-026.jpg",
+    "frame": 374,
+    "time": 14.96,
+    "labels": [
+      "C07 in 先看原始来源"
+    ]
+  },
+  {
+    "file": "frame-027.jpg",
+    "frame": 393,
+    "time": 15.72,
+    "labels": [
+      "C07 mid 先看原始来源"
+    ]
+  },
+  {
+    "file": "frame-028.jpg",
+    "frame": 412,
+    "time": 16.48,
+    "labels": [
+      "C07 out 先看原始来源"
+    ]
+  },
+  {
+    "file": "frame-029.jpg",
+    "frame": 431,
+    "time": 17.24,
+    "labels": [
+      "S03 middle"
+    ]
+  },
+  {
+    "file": "frame-030.jpg",
+    "frame": 447,
+    "time": 17.88,
+    "labels": [
+      "C08 in 再核对日期和上下文。"
+    ]
+  },
+  {
+    "file": "frame-031.jpg",
+    "frame": 468,
+    "time": 18.72,
+    "labels": [
+      "C08 mid 再核对日期和上下文。"
+    ]
+  },
+  {
+    "file": "frame-032.jpg",
+    "frame": 489,
+    "time": 19.56,
+    "labels": [
+      "C08 out 再核对日期和上下文。"
+    ]
+  },
+  {
+    "file": "frame-033.jpg",
+    "frame": 522,
+    "time": 20.88,
+    "labels": [
+      "cut 03"
+    ]
+  },
+  {
+    "file": "frame-034.jpg",
+    "frame": 527,
+    "time": 21.08,
+    "labels": [
+      "cut 03"
+    ]
+  },
+  {
+    "file": "frame-035.jpg",
+    "frame": 532,
+    "time": 21.28,
+    "labels": [
+      "cut 03"
+    ]
+  },
+  {
+    "file": "frame-036.jpg",
+    "frame": 538,
+    "time": 21.52,
+    "labels": [
+      "C09 in 把回答当作线索"
+    ]
+  },
+  {
+    "file": "frame-037.jpg",
+    "frame": 560,
+    "time": 22.4,
+    "labels": [
+      "C09 mid 把回答当作线索"
+    ]
+  },
+  {
+    "file": "frame-038.jpg",
+    "frame": 583,
+    "time": 23.32,
+    "labels": [
+      "C09 out 把回答当作线索"
+    ]
+  },
+  {
+    "file": "frame-039.jpg",
+    "frame": 618,
+    "time": 24.72,
+    "labels": [
+      "C10 in 让证据决定结论。",
+      "S04 middle"
+    ]
+  },
+  {
+    "file": "frame-040.jpg",
+    "frame": 639,
+    "time": 25.56,
+    "labels": [
+      "C10 mid 让证据决定结论。"
+    ]
+  },
+  {
+    "file": "frame-041.jpg",
+    "frame": 660,
+    "time": 26.4,
+    "labels": [
+      "C10 out 让证据决定结论。"
+    ]
+  },
+  {
+    "file": "frame-042.jpg",
+    "frame": 708,
+    "time": 28.32,
+    "labels": [
+      "end"
+    ]
+  }
+]

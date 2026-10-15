@@ -1,0 +1,14 @@
+{
+  "tracks": [
+    {
+      "id": "your-track",
+      "file": "assets/music/your-track.wav",
+      "sha256": "ACTUAL_FILE_SHA256",
+      "license": "ACTUAL_LICENSE",
+      "license_url": "ACTUAL_LICENSE_URL",
+      "detail_url": "ACTUAL_SOURCE_PAGE",
+      "attribution_text": "REQUIRED_CREDIT",
+      "modification_disclosure": "Trimmed, faded, normalized and ducked under narration"
+    }
+  ]
+}

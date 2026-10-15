@@ -1,0 +1,24 @@
+{
+  "width": 1080,
+  "height": 1920,
+  "fps": 25,
+  "intro_pause": 0.4,
+  "outro_pause": 1.2,
+  "speech": {
+    "provider": "local"
+  },
+  "transition": {
+    "type": "cross-dissolve",
+    "seconds": 0.48
+  },
+  "caption_motion": {
+    "type": "fade",
+    "fade_in": 0.12,
+    "fade_out": 0.16,
+    "bridge_gap": 0.18
+  },
+  "bgm": {
+    "enabled": false
+  },
+  "no_repeated_images": true
+}

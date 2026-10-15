@@ -1,0 +1,10 @@
+{
+  "status": "pending",
+  "reviewer": null,
+  "signature": null,
+  "observations": null,
+  "blocking_issues": null,
+  "agent_response_file": "reviews/caption-layout-agent.md",
+  "agent_response_sha256": null,
+  "offline_report_sha256": null
+}

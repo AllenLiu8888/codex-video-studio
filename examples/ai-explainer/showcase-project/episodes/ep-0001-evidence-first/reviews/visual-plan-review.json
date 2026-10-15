@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "plan_sha256": "59f5560c65c949cd39696595cb08e7c75e8c0935b77e446b6e0acd29353ea702",
+  "design_sha256": "fa29201fdd3cfd8367e7dd30a385170eee7c94bb1ddedc58de910b2d0f033c29",
+  "reviewer": "Codex subagent /root/public_skills",
+  "agent_response_file": "reviews/visual-plan-agent.md",
+  "agent_response_sha256": "c0f59a23d6d34ac7a4b99a435342d34f307047b33ce19c1a502a2a398048803b",
+  "blocking_issues": [],
+  "human_acceptance": "pending"
+}

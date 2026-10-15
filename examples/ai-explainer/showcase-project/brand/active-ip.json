@@ -1,0 +1,10 @@
+{
+  "status": "example_identity_reference_not_human_accepted",
+  "references": [
+    {
+      "file": "brand/references/character-master.png",
+      "sha256": "811091d20d7220579125b7bace4916cad2949daa872ed4c7f59e88ac67fd7f13",
+      "role": "identity master: one lens, coral right tab, two navy feet; matte paper"
+    }
+  ]
+}

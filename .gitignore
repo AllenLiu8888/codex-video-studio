@@ -1,0 +1,26 @@
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+# Local environments and caches
+.venv/
+.venv-*/
+**/__pycache__/
+*.py[cod]
+.DS_Store
+**/.allocate.lock
+**/.submit.lock
+**/paid-cache/
+**/tts-cache/
+# User production is local by default; distribute only curated example inputs.
+/brand/
+/episodes/
+/runs/
+/work/
+examples/**/runs/
+examples/**/work/
+
+# Local workspace identity; portable state template is tracked instead.
+/PROJECT.md

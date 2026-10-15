@@ -1,0 +1,21 @@
+{
+  "provider": "MiniMax CN",
+  "speech": {
+    "provider": "minimax-cn",
+    "model": "speech-2.8-hd",
+    "voice": "Chinese_wenrounvxing",
+    "speed": 0.8
+  },
+  "narration_sha256": "b5def6ec441e9ebb3f7061de797b990d94688153e45b929c43b75a2d83d153b7",
+  "audio_sha256": "a063cedcfe037aeb54a257e498c64c822c0cec1a2c435efb1a8643b1ea2b184f",
+  "duration_seconds": 26.771416666666667,
+  "usage_characters": 197,
+  "billing_verified": false,
+  "generated_on": "2026-10-16",
+  "synthetic_voice": true,
+  "human_listening_acceptance": "pending",
+  "response_metadata": "Account-specific response and expiring URLs deliberately not distributed.",
+  "submitted_text_sha256": "5507f056483dba29c8ac1c678c0eefdaa93990301be0d1b624bbe88dc064de7b",
+  "request_text_file_sha256": "5d93ea02135a22d82ded9abeef2c6af7d79db3e2cf23cc0374e2df3c36024652",
+  "submission_text_normalization": "Leading and trailing whitespace removed with str.strip() before MiniMax submission; editorial words and pause tags unchanged."
+}

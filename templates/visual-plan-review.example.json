@@ -1,0 +1,9 @@
+{
+  "status": "pending",
+  "reviewer": null,
+  "plan_sha256": null,
+  "design_sha256": null,
+  "agent_response_file": "reviews/visual-plan-agent.md",
+  "agent_response_sha256": null,
+  "blocking_issues": null
+}

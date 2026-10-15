@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "workflow_version": "2.1.0",
+  "episode_id": "__EPISODE_ID__",
+  "narration_sha256": "__ACTUAL_HASH__",
+  "distinctive_content": "本期独有观察或事件",
+  "shots": [
+    {
+      "id": "shot-01",
+      "segment_id": "opening",
+      "anchor": {
+        "sentence": 1,
+        "caption": 0
+      },
+      "asset_id": "image-01",
+      "source_text": "__EXACT_CAPTION_TEXT_FOR_THIS_SHOT__",
+      "meaning": "metaphor",
+      "viewer_takeaway": "具体生活情境中的情绪感受",
+      "method": "illustration",
+      "source_type": "generated",
+      "selection_reason": "静态画面足够表达，保留安静感",
+      "visual_description": "根据本句设计的明确主体、构图、状态；不要直接复用占位句",
+      "task_file": "prompts/shot-01.txt",
+      "fallback": "同一语义的环境近景",
+      "complex_motion_segment": null,
+      "caption_layout": {
+        "box": [
+          0.08,
+          0.8,
+          0.84,
+          0.12
+        ],
+        "align": "center",
+        "theme": "light_text",
+        "max_lines": 2,
+        "layout_group": "opening",
+        "reason": "EXAMPLE ONLY: replace after checking the actual composition",
+        "protected_regions": [
+          {
+            "box": [
+              0.25,
+              0.2,
+              0.5,
+              0.4
+            ],
+            "reason": "EXAMPLE ONLY: replace with actual protected subject"
+          }
+        ]
+      }
+    }
+  ]
+}

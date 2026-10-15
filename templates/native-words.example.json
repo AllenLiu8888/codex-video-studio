@@ -1,0 +1,16 @@
+[
+  {
+    "timestamped_words": [
+      {
+        "word": "A model",
+        "time_begin": 120,
+        "time_end": 750
+      },
+      {
+        "word": "predicts patterns.",
+        "time_begin": 850,
+        "time_end": 2000
+      }
+    ]
+  }
+]

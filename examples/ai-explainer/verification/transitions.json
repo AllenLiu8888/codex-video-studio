@@ -1,0 +1,28 @@
+{
+  "half_frames": 6,
+  "fps": 25,
+  "output_frames": 709,
+  "events": [
+    {
+      "boundary": 1,
+      "start": 5.359999999999999,
+      "center": 5.6,
+      "end": 5.84,
+      "type": "cross-dissolve"
+    },
+    {
+      "boundary": 2,
+      "start": 13.12,
+      "center": 13.36,
+      "end": 13.6,
+      "type": "cross-dissolve"
+    },
+    {
+      "boundary": 3,
+      "start": 20.84,
+      "center": 21.08,
+      "end": 21.319999999999997,
+      "type": "cross-dissolve"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "status": "assistant_visual_pass",
+  "asset_sha256": "43d3c064ba314f0a7f2f7e43a03b8172df1d279a65a0e903284669343e4530af",
+  "provenance": {
+    "source_or_creation_record": "Original code-authored typography and vector shapes",
+    "license": "Project original example",
+    "derivation": "No source photo or generated image reused"
+  },
+  "reviewer": "Codex subagent /root/public_skills",
+  "observations": "Original typography checked in actual source image; final caption/frame review remains separate.",
+  "human_acceptance": "pending",
+  "response_file": "reviews/visual-plan-agent.md",
+  "response_sha256": "c0f59a23d6d34ac7a4b99a435342d34f307047b33ce19c1a502a2a398048803b"
+}

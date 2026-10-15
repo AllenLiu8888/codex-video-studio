@@ -1,0 +1,13 @@
+{
+  "status": "pending",
+  "reviewer": null,
+  "observations": null,
+  "blocking_issues": null,
+  "timing_sha256": null,
+  "preview_file": "storyboard-preview.mp4",
+  "preview_sha256": null,
+  "sources_sha256": null,
+  "asset_sha256": {},
+  "clip_playback": {},
+  "note": "For each video require actual playback evidence keyed by asset id: played, reviewer, observations, blocking_issues, source_sha256, asset_spec_sha256."
+}

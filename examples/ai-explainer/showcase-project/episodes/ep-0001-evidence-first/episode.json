@@ -1,0 +1,157 @@
+{
+  "width": 1080,
+  "height": 1920,
+  "fps": 25,
+  "intro_pause": 0.4,
+  "outro_pause": 1.2,
+  "speech": {
+    "provider": "local",
+    "wav": "episodes/ep-0001-evidence-first/audio/narration.wav",
+    "timestamps": "episodes/ep-0001-evidence-first/audio/native-subtitles.json",
+    "voice_label": "Published synthetic example; MiniMax provenance retained separately"
+  },
+  "transition": {
+    "type": "cross-dissolve",
+    "seconds": 0.48
+  },
+  "caption_motion": {
+    "type": "fade",
+    "fade_in": 0.12,
+    "fade_out": 0.16,
+    "bridge_gap": 0.18
+  },
+  "bgm": {
+    "enabled": false
+  },
+  "no_repeated_images": true,
+  "id": "ep-0001-evidence-first",
+  "title": "流畅的回答，一定可信吗？",
+  "workflow_version": "2.1.0",
+  "brand": "episodes/ep-0001-evidence-first/brand.json",
+  "series_label": "未见实验室",
+  "research": {
+    "sources": [
+      {
+        "id": "openai-safety",
+        "title": "OpenAI Safety best practices",
+        "url": "https://developers.openai.com/api/docs/guides/safety-best-practices",
+        "checked_on": "2026-10-16",
+        "review_record": "reviews/initial-editorial-review.md"
+      }
+    ],
+    "claims": [
+      {
+        "id": "model-inaccuracy",
+        "claim": "生成式人工智能可能生成流畅但不准确的信息",
+        "source_ids": [
+          "openai-safety"
+        ]
+      }
+    ]
+  },
+  "assets": [
+    {
+      "id": "shot-01",
+      "kind": "generated",
+      "file": "episodes/ep-0001-evidence-first/assets/shot-01.png",
+      "prompt_file": "episodes/ep-0001-evidence-first/prompts/shot-01.txt",
+      "reference": null,
+      "generation_record": "episodes/ep-0001-evidence-first/generation/shot-01.json",
+      "provider": "Codex built-in imagegen",
+      "model": null,
+      "seed": null,
+      "motion": "static"
+    },
+    {
+      "id": "shot-02",
+      "kind": "generated",
+      "file": "episodes/ep-0001-evidence-first/assets/shot-02.png",
+      "prompt_file": "episodes/ep-0001-evidence-first/prompts/shot-02.txt",
+      "reference": "brand/references/character-master.png",
+      "generation_record": "episodes/ep-0001-evidence-first/generation/shot-02.json",
+      "provider": "Codex built-in imagegen",
+      "model": null,
+      "seed": null,
+      "motion": "static"
+    },
+    {
+      "id": "shot-03",
+      "kind": "generated",
+      "file": "episodes/ep-0001-evidence-first/assets/shot-03.png",
+      "prompt_file": "episodes/ep-0001-evidence-first/prompts/shot-03.txt",
+      "reference": "brand/references/character-master.png",
+      "generation_record": "episodes/ep-0001-evidence-first/generation/shot-03.json",
+      "provider": "Codex built-in imagegen",
+      "model": null,
+      "seed": null,
+      "motion": "static"
+    },
+    {
+      "id": "shot-04",
+      "kind": "prepared_image",
+      "file": "episodes/ep-0001-evidence-first/assets/shot-04.png",
+      "record_file": "episodes/ep-0001-evidence-first/generation/shot-04.json",
+      "motion": "static"
+    }
+  ],
+  "sentences": [
+    {
+      "text": "一个回答说得流畅，就一定可信吗？",
+      "captions": [
+        "一个回答说得流畅",
+        "就一定可信吗？"
+      ],
+      "asset": "shot-01",
+      "claims": [],
+      "kind": "explanation"
+    },
+    {
+      "text": "生成式人工智能也会给出听起来合理、实际上错误的信息。",
+      "captions": [
+        "生成式人工智能",
+        "也会给出听起来合理",
+        "实际上错误的信息。"
+      ],
+      "asset": "shot-02",
+      "claims": [
+        "model-inaccuracy"
+      ],
+      "kind": "explanation"
+    },
+    {
+      "text": "遇到重要的事实，先看原始来源，再核对日期和上下文。",
+      "captions": [
+        "遇到重要的事实",
+        "先看原始来源",
+        "再核对日期和上下文。"
+      ],
+      "asset": "shot-03",
+      "claims": [],
+      "kind": "explanation"
+    },
+    {
+      "text": "把回答当作线索，让证据决定结论。",
+      "captions": [
+        "把回答当作线索",
+        "让证据决定结论。"
+      ],
+      "asset": "shot-04",
+      "claims": [],
+      "kind": "explanation"
+    }
+  ],
+  "visual_plan": {
+    "file": "visual-plan.json",
+    "review_file": "reviews/visual-plan-review.json"
+  },
+  "audio_direction": {
+    "request_text_file": "audio/request-text.txt",
+    "review_file": "audio/direction.json",
+    "request_text_sha256": "5d93ea02135a22d82ded9abeef2c6af7d79db3e2cf23cc0374e2df3c36024652",
+    "review_sha256": "6af9e7e306571bc2248bb2559d50a9f92bc084cf5f9c4038758cd84d65f07f4d"
+  },
+  "caption_layout": {
+    "review_file": "reviews/caption-layout-review.json"
+  },
+  "edition_label": "公开示例"
+}

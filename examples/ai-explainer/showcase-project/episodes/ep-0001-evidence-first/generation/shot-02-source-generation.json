@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "provider": "Codex built-in image generation",
+  "created_on": "2026-10-16",
+  "backend_model": null,
+  "numeric_seed": null,
+  "prompt_file": "puzzle-prompt.txt",
+  "prompt_sha256": "db3be67733bddafa9be1708c1e5f05c8e2f2de59768d691a87142f6bfbf46d25",
+  "references": [
+    {
+      "file": "character-master.png",
+      "sha256": "811091d20d7220579125b7bace4916cad2949daa872ed4c7f59e88ac67fd7f13",
+      "role": "identity and paper material reference"
+    }
+  ],
+  "output": {
+    "file": "scene-missing-piece.png",
+    "sha256": "a819ceb3d579cbab9ee9a900a6835464a6dde1e79d49d2e2187ac1e1ef85bcc8"
+  },
+  "review": {
+    "reviewer": "Codex primary agent; direct image inspection",
+    "assistant_result": "assistant_visual_pass",
+    "veto_findings": [],
+    "notes": "Exactly one navy observation lens, coral right-side tab and two navy feet; consistent matte paper treatment. Scene is an editorial metaphor, not evidence or an AI mechanism diagram.",
+    "human_acceptance": "pending"
+  }
+}

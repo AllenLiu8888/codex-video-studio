@@ -1,0 +1,49 @@
+{
+  "status": "passed",
+  "reviewer": "Codex subagent /root/final_public_review",
+  "signature": "04952ae9da5f2f9f7071bdb85cfa9d8f0307860e0c732375151ceba388fdcbe5",
+  "observations": "Actual view_image inspection of all 42 sampled frames in 3 contact sheets, plus 16 individually enlarged frames and all 4 source assets. All 10 captions are legible and complete; no subject clipping, subtitle occlusion, corrupted glyphs or unsafe upper/lower caption switch observed. Film/evidence hashes match and caption signature was independently recomputed. Scope is offline sampled-still visual review only; continuous playback and listening were not performed. Human acceptance remains pending.",
+  "blocking_issues": [],
+  "agent_response_file": "reviews/caption-layout-agent.md",
+  "agent_response_sha256": "cbf14c7474b37406ddc9c4abb9ba7d676f51660bd0cba7bfb0501f0dbf378f2c",
+  "offline_report_sha256": "dfa9374d4e161dd72fd4f14591384260b77f1af15cffdc5645c10baef444491f",
+  "film_sha256": "4a8c9253005d48f11e8ed0e44e2328783a2b6cfca4ae6e7b9763178a6e0716d3",
+  "run_id": "ep-0001-evidence-first-5af6629eb9",
+  "review_mode": "independent_offline_visual",
+  "contact_sheets_viewed": [
+    "contact-01.jpg",
+    "contact-02.jpg",
+    "contact-03.jpg"
+  ],
+  "samples_viewed_in_contact_sheets": 42,
+  "individual_frames_viewed": [
+    "frame-003.jpg",
+    "frame-007.jpg",
+    "frame-010.jpg",
+    "frame-012.jpg",
+    "frame-015.jpg",
+    "frame-019.jpg",
+    "frame-022.jpg",
+    "frame-024.jpg",
+    "frame-027.jpg",
+    "frame-031.jpg",
+    "frame-033.jpg",
+    "frame-034.jpg",
+    "frame-035.jpg",
+    "frame-037.jpg",
+    "frame-040.jpg",
+    "frame-042.jpg"
+  ],
+  "evidence_hashes_verified": 46,
+  "recomputed_signature_matches": true,
+  "continuous_playback": "not_performed",
+  "listening_status": "not_performed",
+  "subjective_listening": "pending",
+  "human_acceptance": "pending",
+  "limitations": [
+    "Sampled stills, not every video frame",
+    "No continuous playback or subjective audio review",
+    "No platform-specific overlay validation",
+    "No publication authorization assessed"
+  ]
+}

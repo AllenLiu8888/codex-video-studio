@@ -1,0 +1,12 @@
+{
+  "name": "Your Brand",
+  "palette": {
+    "dark": "#17283B",
+    "light": "#F5F2E9",
+    "accent": "#E5856B"
+  },
+  "subtitle": {
+    "font_file": "auto",
+    "size_ratio": 0.044
+  }
+}

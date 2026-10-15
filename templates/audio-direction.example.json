@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "status": "pending_audio_agent",
+  "reviewer": {
+    "mode": "subagent",
+    "task_id": "__ACTUAL_AUDIO_AGENT_TASK_ID__",
+    "response_file": "audio/agent-response.md",
+    "response_sha256": "__ACTUAL_RESPONSE_FILE_SHA256__"
+  },
+  "narration_sha256": "__LOCKED_NARRATION_SHA256__",
+  "request_text_sha256": "__ACTUAL_REQUEST_TEXT_SHA256__",
+  "speech": {
+    "provider": "minimax-cn",
+    "model": "__FROM_THIS_EPISODE__",
+    "voice": "__FROM_THIS_EPISODE__",
+    "speed": null
+  },
+  "model_requirements": {
+    "source_url": "https://platform.minimax.cn/docs/api-reference/speech-t2a-http",
+    "checked_on": "__ACTUAL_CHECK_DATE__",
+    "notes": "__CURRENT_MODEL_CAPABILITIES_AND_CONSTRAINTS__"
+  },
+  "reasoning_summary": "__SEMANTIC_GROUPS_PAUSES_AND_PRONUNCIATION_RISKS__",
+  "listening_status": "not_generated_yet",
+  "local_audio_sha256": null,
+  "local_audio_note": "For provider=local this must be the exact project-relative path -> SHA-256 map returned by local_audio.source_signature(speech, root, require_exists=True). Include WAV and timestamp JSON or every per-caption clip. Null is only for non-local providers or an unreviewed template."
+}

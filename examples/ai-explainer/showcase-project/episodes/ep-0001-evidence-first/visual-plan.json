@@ -1,0 +1,181 @@
+{
+  "schema_version": 1,
+  "workflow_version": "2.1.0",
+  "episode_id": "ep-0001-evidence-first",
+  "narration_sha256": "b5def6ec441e9ebb3f7061de797b990d94688153e45b929c43b75a2d83d153b7",
+  "distinctive_content": "用角色、缺口隐喻、证据卡片和品牌收束区分流畅回答与可信结论；没有解释动效。",
+  "shots": [
+    {
+      "id": "shot-01",
+      "segment_id": "segment-1",
+      "anchor": {
+        "sentence": 1,
+        "caption": 0
+      },
+      "asset_id": "shot-01",
+      "source_text": "一个回答说得流畅就一定可信吗？",
+      "meaning": "metaphor",
+      "viewer_takeaway": "流畅不能单独证明可信。",
+      "method": "illustration",
+      "source_type": "generated",
+      "selection_reason": "静态品牌插画足以表达，给文字与声音留出空间。",
+      "visual_description": "角色观察者提出问题；保留上方空白。",
+      "task_file": "prompts/shot-01.txt",
+      "fallback": "同一隐喻的无角色静态图，不重复上一张。",
+      "complex_motion_segment": null,
+      "caption_layout": {
+        "box": [
+          0.09,
+          0.12,
+          0.82,
+          0.14
+        ],
+        "theme": "dark_text",
+        "align": "center",
+        "max_lines": 2,
+        "layout_group": "top-open",
+        "reason": "已查看原始图，主体位于下方，上方纸白留空；正式9:16裁切后再次复核。",
+        "protected_regions": [
+          {
+            "box": [
+              0.06,
+              0.29,
+              0.88,
+              0.48
+            ],
+            "reason": "角色、拼图或证据卡片主体"
+          }
+        ]
+      }
+    },
+    {
+      "id": "shot-02",
+      "segment_id": "segment-2",
+      "anchor": {
+        "sentence": 2,
+        "caption": 0
+      },
+      "asset_id": "shot-02",
+      "source_text": "生成式人工智能也会给出听起来合理实际上错误的信息。",
+      "meaning": "metaphor",
+      "viewer_takeaway": "合理的语言仍可能错误。",
+      "method": "illustration",
+      "source_type": "generated",
+      "selection_reason": "静态品牌插画足以表达，给文字与声音留出空间。",
+      "visual_description": "拼图缺口是信息核验的编辑隐喻，不是AI模型真实机制。",
+      "task_file": "prompts/shot-02.txt",
+      "fallback": "同一隐喻的无角色静态图，不重复上一张。",
+      "complex_motion_segment": null,
+      "caption_layout": {
+        "box": [
+          0.09,
+          0.12,
+          0.82,
+          0.14
+        ],
+        "theme": "dark_text",
+        "align": "center",
+        "max_lines": 2,
+        "layout_group": "top-open",
+        "reason": "已查看原始图，主体位于下方，上方纸白留空；正式9:16裁切后再次复核。",
+        "protected_regions": [
+          {
+            "box": [
+              0.06,
+              0.4,
+              0.88,
+              0.54
+            ],
+            "reason": "角色、拼图或证据卡片主体"
+          }
+        ]
+      }
+    },
+    {
+      "id": "shot-03",
+      "segment_id": "segment-3",
+      "anchor": {
+        "sentence": 3,
+        "caption": 0
+      },
+      "asset_id": "shot-03",
+      "source_text": "遇到重要的事实先看原始来源再核对日期和上下文。",
+      "meaning": "explanation",
+      "viewer_takeaway": "关键事实需要回到来源核查。",
+      "method": "illustration",
+      "source_type": "generated",
+      "selection_reason": "静态品牌插画足以表达，给文字与声音留出空间。",
+      "visual_description": "卡片柜提示回到来源，画面卡片无伪造文献文字。",
+      "task_file": "prompts/shot-03.txt",
+      "fallback": "同一隐喻的无角色静态图，不重复上一张。",
+      "complex_motion_segment": null,
+      "caption_layout": {
+        "box": [
+          0.09,
+          0.12,
+          0.82,
+          0.14
+        ],
+        "theme": "dark_text",
+        "align": "center",
+        "max_lines": 2,
+        "layout_group": "top-open",
+        "reason": "已查看原始图，主体位于下方，上方纸白留空；正式9:16裁切后再次复核。",
+        "protected_regions": [
+          {
+            "box": [
+              0.06,
+              0.4,
+              0.88,
+              0.54
+            ],
+            "reason": "角色、拼图或证据卡片主体"
+          }
+        ]
+      }
+    },
+    {
+      "id": "shot-04",
+      "segment_id": "closing",
+      "anchor": {
+        "sentence": 4,
+        "caption": 0
+      },
+      "asset_id": "shot-04",
+      "source_text": "把回答当作线索让证据决定结论。",
+      "meaning": "brand",
+      "viewer_takeaway": "把AI回答当线索，以证据形成结论。",
+      "method": "brand_endcard",
+      "source_type": "layout",
+      "selection_reason": "收束问题并识别品牌，避免再塞入一张人物图。",
+      "visual_description": "纸白底，海军蓝镜头符号与精确中英文品牌文字；口播字幕位于下半部。",
+      "task_file": "prompts/shot-04.txt",
+      "fallback": "无装饰品牌文字落版。",
+      "complex_motion_segment": null,
+      "caption_layout": {
+        "box": [
+          0.09,
+          0.64,
+          0.82,
+          0.17
+        ],
+        "theme": "dark_text",
+        "align": "center",
+        "max_lines": 2,
+        "layout_group": "closing",
+        "reason": "底部留白与中部品牌排字分开，字幕不遮挡标志。",
+        "protected_regions": [
+          {
+            "box": [
+              0.22,
+              0.24,
+              0.56,
+              0.25
+            ],
+            "reason": "品牌镜头图标与中英文名称"
+          }
+        ]
+      }
+    }
+  ]
+}

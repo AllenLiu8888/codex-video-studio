@@ -1,0 +1,72 @@
+{
+  "id": "ep-0001-your-topic",
+  "title": "Your approved title",
+  "workflow_version": "2.1.0",
+  "brand": "episodes/ep-0001-your-topic/brand.json",
+  "width": 1080,
+  "height": 1920,
+  "fps": 25,
+  "intro_pause": 0.4,
+  "outro_pause": 1.2,
+  "speech": {
+    "provider": "local",
+    "wav": "episodes/ep-0001-your-topic/audio/recording.wav",
+    "timestamps": "episodes/ep-0001-your-topic/audio/native-words.json"
+  },
+  "bgm": {
+    "enabled": false
+  },
+  "transition": {
+    "type": "cross-dissolve",
+    "seconds": 0.48
+  },
+  "caption_motion": {
+    "type": "fade",
+    "fade_in": 0.12,
+    "fade_out": 0.16,
+    "bridge_gap": 0.18
+  },
+  "caption_layout": {
+    "review_file": "reviews/caption-layout-review.json"
+  },
+  "audio_direction": {
+    "request_text_file": "audio/request-text.txt",
+    "review_file": "audio/direction.json",
+    "request_text_sha256": null,
+    "review_sha256": null
+  },
+  "visual_plan": {
+    "file": "visual-plan.json",
+    "review_file": "reviews/visual-plan-review.json"
+  },
+  "series_label": "Your series",
+  "no_repeated_images": true,
+  "research": {
+    "sources": [],
+    "claims": []
+  },
+  "assets": [
+    {
+      "id": "shot-01",
+      "kind": "generated",
+      "file": "episodes/ep-0001-your-topic/assets/shot-01.png",
+      "prompt_file": "episodes/ep-0001-your-topic/prompts/shot-01.txt",
+      "reference": null,
+      "provider": "built-in imagegen",
+      "model": null,
+      "seed": null,
+      "generation_record": "episodes/ep-0001-your-topic/generation/shot-01.json",
+      "motion": "gentle"
+    }
+  ],
+  "sentences": [
+    {
+      "text": "A model predicts patterns.",
+      "captions": [
+        "A model predicts patterns."
+      ],
+      "asset": "shot-01",
+      "claims": []
+    }
+  ]
+}

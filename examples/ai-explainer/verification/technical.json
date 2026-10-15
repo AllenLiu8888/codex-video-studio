@@ -1,0 +1,40 @@
+{
+  "full_decode_passed": true,
+  "duration": 28.36,
+  "video_codec": "h264",
+  "audio_codec": "aac",
+  "resolution": [
+    1080,
+    1920
+  ],
+  "captions": 10,
+  "shots": 4,
+  "unique_assets": 4,
+  "unique_image_sha256": 4,
+  "repeat_occurrences": 0,
+  "unique_visual_segments": 4,
+  "unique_media_sha256": 4,
+  "asset_kinds": [
+    "generated",
+    "prepared_image"
+  ],
+  "adjacent_duplicate_images": 0,
+  "adjacent_duplicate_visual_segments": 0,
+  "video_frames": 709,
+  "transition_count": 3,
+  "transition": {
+    "type": "cross-dissolve",
+    "seconds": 0.48
+  },
+  "caption_motion": {
+    "type": "fade",
+    "fade_in": 0.12,
+    "fade_out": 0.16,
+    "bridge_gap": 0.18
+  },
+  "longest_shot_seconds": 7.798185941043085,
+  "subtitle_overlap": false,
+  "human_listening": "pending",
+  "brand_identity_acceptance": "pending",
+  "sha256": "4a8c9253005d48f11e8ed0e44e2328783a2b6cfca4ae6e7b9763178a6e0716d3"
+}
