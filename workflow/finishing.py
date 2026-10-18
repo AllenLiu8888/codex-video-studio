@@ -1,6 +1,6 @@
-"""Composition-aware captions and licensed, voice-first music. No playback/UI.
+"""Composition-aware captions, explicit audio routing and visible openings. No playback/UI.
 
-V2.1 only. Legacy episodes retain their original renderer. Coordinates describe
+V2.1/2.2 contracts retain their selected audio and opening behavior. Coordinates describe
 the final frame, not the uncropped source. A caption never moves while visible.
 """
 from pathlib import Path
@@ -21,6 +21,80 @@ def write(p, value):
 
 def modern(p):
     return tuple(int(x) for x in p.get('workflow_version', '1.0').split('.')[:2]) >= (2, 1)
+
+
+def audio_mode(p):
+    """New productions skip music; frozen 2.1 configurations retain their route."""
+    default = 'narration_only' if tuple(int(x) for x in p.get('workflow_version', '1.0').split('.')[:2]) >= (2, 2) else 'licensed_bgm'
+    mode = p.get('audio_output', {}).get('mode', default)
+    if mode not in {'narration_only', 'licensed_bgm'}:
+        raise ValueError('Unknown audio output mode: ' + str(mode))
+    return mode
+
+
+def audio_signature(root, p):
+    mode = audio_mode(p)
+    return {'mode': mode} if mode == 'narration_only' else {'mode': mode, **music_signature(root, p['bgm'])}
+
+
+def opening_graph(p, input_label, output_label):
+    """Keep a continuous first shot; an explicit visible lift avoids a black first frame."""
+    config = p.get('opening')
+    if config is None:
+        return f'[{input_label}]fade=t=in:st=0:d=0.3[{output_label}]'
+    if config.get('style') != 'visible_smooth_lift':
+        raise ValueError('Unknown opening style')
+    initial = config.get('initial_brightness', .78)
+    seconds = config.get('seconds', .8)
+    if isinstance(initial, bool) or not isinstance(initial, (int, float)) or not math.isfinite(initial) or not 0 < initial <= 1:
+        raise ValueError('Opening brightness must be visible and at most 1')
+    if isinstance(seconds, bool) or not isinstance(seconds, (int, float)) or not math.isfinite(seconds) or seconds <= 0:
+        raise ValueError('Opening duration must be positive')
+    q = f'clip(T/{seconds},0,1)'
+    ease = f'({q}*{q}*(3-2*{q}))'
+    return (f'[{input_label}]split[opening-source][opening-dim];'
+            f"[opening-dim]lut=y='16+(val-16)*{initial}':u='128+(val-128)*{initial}':v='128+(val-128)*{initial}'[opening-dimmed];"
+            f"[opening-source][opening-dimmed]blend=all_expr='A+(B-A)*(1-{ease})':enable='lt(t,{seconds})'[{output_label}]")
+
+
+def mux_narration_only(visual, narration, dest, duration, title, report_dir=None):
+    """Normalize supplied clean narration and copy visuals; no music node is called."""
+    if isinstance(duration, bool) or not isinstance(duration, (int, float)) or not math.isfinite(duration) or duration <= 0:
+        raise ValueError('Final duration must be positive')
+    visual, narration, dest = map(Path, (visual, narration, dest))
+    out = Path(report_dir) if report_dir else dest.parent / 'audio-output'
+    out.mkdir(parents=True, exist_ok=True)
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    probe = json.loads(run_command(['ffprobe', '-v', 'error', '-show_streams', '-show_format', '-of', 'json', narration]).stdout)
+    if len([s for s in probe['streams'] if s['codec_type'] == 'audio']) != 1:
+        raise ValueError('Narration must contain exactly one audio stream')
+    source_duration = float(probe['format']['duration'])
+    if source_duration > duration + .05:
+        raise ValueError('Narration would be truncated by the final visual duration')
+    normalized = out / 'narration-normalized.wav'
+    normalize(narration, normalized, target=-17)
+    run_command(['ffmpeg', '-v', 'error', '-y', '-i', visual, '-i', normalized,
+                 '-map', '0:v:0', '-map', '1:a:0', '-c:v', 'copy', '-c:a', 'aac', '-b:a', '192k',
+                 '-ar', '48000', '-af', 'apad', '-t', duration, '-movflags', '+faststart',
+                 '-metadata', 'title=' + title, '-metadata', 'comment=Clean narration only; no background music', dest])
+    loud = measure(dest)
+    if abs(float(loud['input_i']) + 17) > 1 or float(loud['input_tp']) > -1.4:
+        raise ValueError('Narration output loudness/true peak outside delivery tolerance')
+    def video_hash(path):
+        return run_command(['ffmpeg', '-v', 'error', '-i', path, '-map', '0:v:0', '-c', 'copy',
+                            '-f', 'hash', '-hash', 'sha256', '-']).stdout.strip()
+    visual_hash = video_hash(visual)
+    if video_hash(dest) != visual_hash:
+        raise ValueError('Narration mux changed the visual stream')
+    report = {'mode': 'narration_only', 'music_stage': 'skipped', 'music_tracks': [],
+              'narration_source': narration.name, 'narration_source_sha256': sha(narration),
+              'narration_duration': source_duration, 'duration': duration,
+              'normalized_narration_sha256': sha(normalized),
+              'processing': 'Original narration, two-pass -17 LUFS normalization; silence padding only; no music mix',
+              'video_stream_sha256': visual_hash, 'output_file': dest.name, 'output_sha256': sha(dest),
+              'loudness': loud, 'subjective_listening': 'pending_user_acceptance'}
+    write(out / 'report.json', report)
+    return report
 
 
 def box(value):
@@ -80,7 +154,7 @@ def caption_signature(p,ep,run,root):
     brand=json.loads((root/p['brand']).read_text())
     value={'plan':sha(ep/p['visual_plan']['file']),'timeline':sha(run/'timeline.json'),
            'sources':sha(run/'sources.json'),'font':sha(resolve_font(brand['subtitle'].get('font_file','auto'), root)),'subtitle_style':brand['subtitle'],
-           'settings':{k:p.get(k) for k in ['caption_motion','caption_layout','transition','width','height','fps']},
+           'settings':{k:p.get(k) for k in ['caption_motion','caption_layout','transition','opening','audio_output','width','height','fps']},
            'assets':[(a['id'],sha(root/a['file']),a.get('motion','gentle')) for a in p['assets']],
            'renderer':sha(__file__)}
     return hashlib.sha256(json.dumps(value,sort_keys=True).encode()).hexdigest()
@@ -251,8 +325,13 @@ def finish_film(p,brand,episode,run,root,base_video):
     if proc.wait():raise RuntimeError(err)
     visual=out/'finished-visual.mp4'
     run_command(['ffmpeg','-v','error','-y','-i',base_video,'-i',overlay,'-filter_complex',
-                 f'[0:v][1:v]overlay=0:0:shortest=1,fade=t=in:st=0:d=0.3,fade=t=out:st={duration-.6}:d=0.6[v]',
+                 '[0:v][1:v]overlay=0:0:shortest=1[composite];' + opening_graph(p, 'composite', 'opened')
+                 + f';[opened]fade=t=out:st={duration-.6}:d=0.6[v]',
                  '-map','[v]','-an','-c:v','libx264','-preset','fast','-crf','19','-threads','4','-pix_fmt','yuv420p','-t',duration,visual])
+    if audio_mode(p) == 'narration_only':
+        mux_narration_only(visual, run/'narration.wav', run/'film.mp4', duration, p['title'])
+        write(out/'layout-inputs.json', {'signature': caption_signature(p, episode, run, root), 'status': 'rendered_pending_offline_layout_review'})
+        return duration
     tracks=mix_music(root,run,p,duration)
     for i,t in enumerate(tracks):
         dest=run/('film.mp4' if i==0 else f'film-bgm-alt-{i:02d}.mp4')
@@ -275,7 +354,12 @@ def release_gate(p,episode,run,root):
         raise ValueError('Actual independent layout response missing/changed')
     if sha(run/'offline-qa/report.json')!=review.get('offline_report_sha256'):raise ValueError('Actual reviewed offline report changed')
     report=json.loads((run/'offline-qa/report.json').read_text())
-    if {m['file'] for m in report['movies']}!=set(movie_names(p)):raise ValueError('Incomplete BGM variant evidence')
+    if {m['file'] for m in report['movies']}!=set(movie_names(p)):raise ValueError('Incomplete final movie evidence for audio mode')
+    if audio_mode(p) == 'narration_only':
+        audio_report = run/'audio-output/report.json'
+        if report.get('audio_output_mode') != 'narration_only' or report.get('audio_report_sha256') != sha(audio_report):
+            raise ValueError('Narration-only audio evidence missing/changed')
+        validate_narration_report(run)
     for name,expected in report['evidence_sha256'].items():
         if sha(run/'offline-qa'/name)!=expected:raise ValueError('Actual reviewed frame evidence changed')
     if report['signature']!=review['signature']:raise ValueError('Offline report is stale')
@@ -284,5 +368,15 @@ def release_gate(p,episode,run,root):
 
 
 def movie_names(p):
+    if audio_mode(p) == 'narration_only':
+        return ['film.mp4']
     count=1 if p.get('bgm',{}).get('enabled') is False else 1+len(p.get('bgm',{}).get('alternatives',[]))
     return ['film.mp4']+[f'film-bgm-alt-{i:02d}.mp4' for i in range(1,count)]
+
+
+def validate_narration_report(run):
+    report = json.loads((run/'audio-output/report.json').read_text())
+    if (report.get('mode') != 'narration_only' or report.get('music_stage') != 'skipped' or report.get('music_tracks') != []
+            or report.get('narration_source_sha256') != sha(run/'narration.wav')
+            or report.get('output_sha256') != sha(run/'film.mp4')):
+        raise ValueError('Narration-only source/output evidence differs')

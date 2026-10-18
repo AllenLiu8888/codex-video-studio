@@ -15,7 +15,7 @@ def create(root,slug,title,narration,source=None):
     profile=root/'brand/profile.json'
     if not profile.exists():write(profile,{'name':'Your Brand','palette':{'dark':'#17283B','light':'#F5F2E9','accent':'#E5856B'},'subtitle':{'font_file':'auto','size_ratio':.044},'status':'draft_needs_brand_design'})
     defaults=root/'brand/production-defaults.json'
-    if not defaults.exists():write(defaults,{'width':1080,'height':1920,'fps':25,'intro_pause':.4,'outro_pause':1.2,'speech':{'provider':'local'},'transition':{'type':'cross-dissolve','seconds':.48},'caption_motion':{'type':'fade','fade_in':.12,'fade_out':.16,'bridge_gap':.18},'bgm':{'enabled':False},'no_repeated_images':True})
+    if not defaults.exists():write(defaults,{'width':1080,'height':1920,'fps':25,'intro_pause':.4,'outro_pause':1.2,'speech':{'provider':'local'},'transition':{'type':'cross-dissolve','seconds':.48},'caption_motion':{'type':'fade','fade_in':.12,'fade_out':.16,'bridge_gap':.18},'audio_output':{'mode':'narration_only'},'opening':{'style':'visible_smooth_lift','initial_brightness':.78,'seconds':.8},'no_repeated_images':True})
     active=root/'brand/active-ip.json'
     if not active.exists():write(active,{'status':'optional_not_configured','references':[]})
     identity=json.loads(active.read_text());references=identity.get('references',[])
@@ -37,9 +37,13 @@ def create(root,slug,title,narration,source=None):
     for name in ['version.json','visual-methods.json']:
         shutil.copy2(CODE_ROOT/'workflow'/name,ep/'generation'/('workflow-version.json' if name=='version.json' else name))
     write(ep/'generation/seed-snapshot.json',{'rule_files':{'workflow/version.json':sha(ep/'generation/workflow-version.json'),'workflow/visual-methods.json':sha(ep/'generation/visual-methods.json')}})
-    settings=json.loads(defaults.read_text());p=dict(settings,id=eid,title=title,workflow_version='2.1.0',brand=str((ep/'brand.json').relative_to(root)),series_label='',research={'sources':[],'claims':[]},assets=[],sentences=[],visual_plan={'file':'visual-plan.json','review_file':'reviews/visual-plan-review.json'},audio_direction={'request_text_file':'audio/request-text.txt','review_file':'audio/direction.json','request_text_sha256':None,'review_sha256':None},caption_layout={'review_file':'reviews/caption-layout-review.json'})
+    settings=json.loads(defaults.read_text())
+    # Preserve an existing project's music choice while making the new routing explicit.
+    settings.setdefault('audio_output', {'mode':'licensed_bgm' if settings.get('bgm',{}).get('enabled') is not False and settings.get('bgm') else 'narration_only'})
+    version=json.loads((ep/'generation/workflow-version.json').read_text())['workflow_version']
+    p=dict(settings,id=eid,title=title,workflow_version=version,brand=str((ep/'brand.json').relative_to(root)),series_label='',research={'sources':[],'claims':[]},assets=[],sentences=[],visual_plan={'file':'visual-plan.json','review_file':'reviews/visual-plan-review.json'},audio_direction={'request_text_file':'audio/request-text.txt','review_file':'audio/direction.json','request_text_sha256':None,'review_sha256':None},caption_layout={'review_file':'reviews/caption-layout-review.json'})
     write(ep/'episode.json',p)
-    write(ep/'visual-plan.json',{'schema_version':1,'workflow_version':'2.1.0','episode_id':eid,'narration_sha256':sha(ep/'narration.txt'),'distinctive_content':None,'shots':[]})
+    write(ep/'visual-plan.json',{'schema_version':1,'workflow_version':version,'episode_id':eid,'narration_sha256':sha(ep/'narration.txt'),'distinctive_content':None,'shots':[]})
     write(ep/'reviews/visual-plan-review.json',{'status':'pending','plan_sha256':None,'design_sha256':None,'reviewer':None,'agent_response_file':'reviews/visual-plan-agent.md','agent_response_sha256':None,'blocking_issues':None})
     write(ep/'audio/direction.json',{'schema_version':1,'status':'pending_audio_agent','reviewer':None,'narration_sha256':sha(ep/'narration.txt'),'request_text_sha256':None,'speech':p['speech'],'model_requirements':None,'reasoning_summary':None})
     write(ep/'reviews/caption-layout-review.json',{'status':'pending','reviewer':None,'observations':None,'blocking_issues':None})

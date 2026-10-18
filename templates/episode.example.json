@@ -1,7 +1,7 @@
 {
   "id": "ep-0001-your-topic",
   "title": "Your approved title",
-  "workflow_version": "2.1.0",
+  "workflow_version": "2.2.0",
   "brand": "episodes/ep-0001-your-topic/brand.json",
   "width": 1080,
   "height": 1920,
@@ -13,8 +13,13 @@
     "wav": "episodes/ep-0001-your-topic/audio/recording.wav",
     "timestamps": "episodes/ep-0001-your-topic/audio/native-words.json"
   },
-  "bgm": {
-    "enabled": false
+  "audio_output": {
+    "mode": "narration_only"
+  },
+  "opening": {
+    "style": "visible_smooth_lift",
+    "initial_brightness": 0.78,
+    "seconds": 0.8
   },
   "transition": {
     "type": "cross-dissolve",
