@@ -1,6 +1,6 @@
 # 运行接口：配置、证据与成片
 
-Python 3.10+；Pillow、NumPy；FFmpeg/ffprobe；可用中文字体。支持 macOS/Linux，Windows 使用 WSL。`requirements.txt` 不含 FFmpeg；软件包不会自动安装依赖、下载模型或调用生成服务。内置 Imagegen 由具备该能力的 Codex 会话调用，CLI 不伪造其 API。公共包版本 `1.0.0` 使用 `workflow_version=2.1.0` 的制作合同。
+Python 3.10+；Pillow、NumPy；FFmpeg/ffprobe；可用中文字体。支持 macOS/Linux，Windows 使用 WSL。`requirements.txt` 不含 FFmpeg；软件包不会自动安装依赖、下载模型或调用生成服务。内置 Imagegen 由具备该能力的 Codex 会话调用，CLI 不伪造其 API。公共包版本 `1.1.0` 新期使用 `workflow_version=2.2.0`，继续支持已冻结的2.1合同；更新运行时代码会生成新的run并要求对受影响的结果重新审查，不回写旧示例。
 
 ## 第一次运行
 
@@ -32,7 +32,7 @@ python3 studio.py --project /path/project init --slug your-topic --title '标题
 
 - `brand/profile.json`：`name`、`palette.dark/light/accent`、`subtitle.font_file/size_ratio`；可覆盖 `subtitle.light_text/dark_text`。图像风格与 IP 由品牌文档和生图提示词落实，渲染器不自动识别人物或重绘图片。
 - `brand/active-ip.json`：`status` 与 `references` 数组，每项 `{file, sha256, role}`。路径相对项目根，role 说明身份主图/侧面/局部/风格参考等用途；无角色的品牌允许空数组。
-- `brand/production-defaults.json`：平铺的 episode 默认字段（不是 `episode_defaults` 嵌套）。初始化默认1080×1920、25fps、0.48秒叠化、字幕0.12/0.16秒淡入淡出，本地音频、无BGM；没有固定声线或行业配色假设。
+- `brand/production-defaults.json`：平铺的 episode 默认字段（不是 `episode_defaults` 嵌套）。新项目默认1080×1920、25fps、0.48秒叠化、字幕0.12/0.16秒淡入淡出、本地音频、`audio_output.mode=narration_only` 和可见首镜缓提亮；没有固定声线或行业配色假设。已有默认文件保持不变；若仅含旧 `bgm` 设置，新期初始化会据其enabled状态显式选择音频路由；已有2.1期本身不升级。
 
 每期 `brand.json`、`generation/brand-snapshot.json`、`source/locked-inputs.json` 冻结实际输入。以后修改共用默认只影响新期。不要为了消除错误重写旧文件的哈希；需要更改时创建明确修订并重新审核受影响阶段。
 
@@ -113,9 +113,11 @@ clips 必须与所有 sentences.captions 按顺序一一对应，逐文件测量
 
 付费请求按endpoint+payload全哈希缓存，文件锁防重复提交；超时/结果不明记录 `submission_unknown` 并停止，不自动重发。字幕下载失败保留已返回音频；检查状态后恢复，不删除缓存以“修复”。首次调用会消耗用户自己的API额度；仓库不会借用作者账户。内置生图可用性及账户额度由使用者自己的Codex账户决定。
 
-## 配乐与验收
+## 音频输出、开头与验收
 
-不配乐：`bgm:{"enabled":false}`，仍规范化口播。配乐示例：
+2.2默认 `audio_output:{"mode":"narration_only"}`：从干净 `narration.wav` 两遍校准至约-17LUFS，静音补齐尾部并封装；不读取曲库、不调用音乐混音、不输出备选配乐版。源旁白长于最终视觉时阻断，避免截断。`audio-output/report.json` 记录干净源/输出SHA、视频流一致性、响度和未试听状态，离线审核及发布门禁绑定该报告。2.1未指定路由时保留旧契约，`bgm:{"enabled":false}` 仍通过旧voice-only混音分支。
+
+显式选配乐：设置 `audio_output:{"mode":"licensed_bgm"}` 并提供 `bgm`，例如：
 
 ```json
 {"enabled":true,"catalog_file":"assets/music/catalog.json","default_track":"track-1","alternatives":[],"bed_lufs":-36,"fade_in_seconds":2.2,"fade_out_seconds":3}
@@ -123,7 +125,11 @@ clips 必须与所有 sentences.captions 按顺序一一对应，逐文件测量
 
 支持1默认＋0至2备选；曲库 schema见 `templates/music-library.example.json`。每首必须有文件SHA、许可、来源、署名和改动披露；时长不足停止，不默默循环。口播校准后，配乐默认-36LUFS并随语音再压低约4dB，成片目标-17LUFS、true peak≤-1.5dBTP，保留独立声轨、测量和许可文本。数字合格不代替主观听感。发布时遵循选定曲目的署名条款，不只把署名藏在文件元数据。
 
+可见开头：`opening:{"style":"visible_smooth_lift","initial_brightness":0.78,"seconds":0.8}`。首帧显示同一首镜，在0.8秒内用smoothstep提亮，保留时间线与结束淡出；亮度范围(0,1]，时长须为正。省略 `opening` 使用0.3秒黑淡入。它不是平台封面元数据接口，平台预览仍须实际发送检查。品牌角色与尾卡的选图规则见[首尾画面](finishing-and-delivery.md)。
+
 `offline-review` 完整解码所有变体、抽查字幕首中尾/镜头切换/首尾画面、核对声压及变体视频流一致性。最终 `verify` 要求真实独立字幕审核绑定当前离线报告和全部文件SHA，输出 `film.mp4`、可选备选版、`captions.srt`、`narration.wav`、`qa/validation.json` 和不自动播放的 `index.html`。文件通过、Agent视觉审查、完整播放试听、人类接受是四种不同结论。
+
+成片检查后由Agent完成[素材ZIP与已授权改稿对比](finishing-and-delivery.md)，给出实际下载链接和校验结果；渲染命令本身不自动创建这些附件。
 
 ## 已实现边界
 

@@ -8,6 +8,7 @@ This repository is a production toolkit. Keep client projects and paid-service c
 - For brand/IP design, load `.agents/skills/brand-seed/SKILL.md`.
 - For a script-to-shot-plan task, load `.agents/skills/storyboard-director/SKILL.md`.
 - For runtime changes, inspect `studio.py --help`, the affected module and relevant tests. Preserve existing episode snapshots and outputs.
+- For opening/endcard changes, final delivery or script-change reports, read `docs/finishing-and-delivery.md` for the required assets and verification.
 
 ## Sources of truth
 

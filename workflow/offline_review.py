@@ -6,7 +6,7 @@ import math
 import subprocess
 
 from portable import resolve_font
-from finishing import sha,write,measure,caption_signature,run_command, movie_names
+from finishing import sha,write,measure,caption_signature,run_command,movie_names,audio_mode,validate_narration_report
 
 
 def inspect(episode,run,root):
@@ -55,8 +55,11 @@ def inspect(episode,run,root):
         visual_hashes.append(video_hash)
         movies.append({'file':name,'sha256':sha(path),'duration':float(probe['format']['duration']),
                        'frames':int(v['nb_frames']),'full_decode':'passed','loudness':loud,'video_stream_sha256':video_hash})
-    if len(set(visual_hashes))!=1:raise ValueError('BGM variants do not share identical video stream')
+    if len(set(visual_hashes))!=1:raise ValueError('Final variants do not share identical video stream')
+    if audio_mode(p) == 'narration_only':
+        validate_narration_report(run)
     report={'validation_mode':'offline_no_playback','signature':caption_signature(p,episode.parent,run,root),
+            'audio_output_mode':audio_mode(p),'audio_report_sha256':sha(run/'audio-output/report.json') if audio_mode(p)=='narration_only' else None,
             'movies':movies,'samples':len(mapping),'contact_sheets':sheets,'captions':len(placements),
             'subjective_listening':'pending_user_acceptance','human_acceptance':'pending',
             'evidence_sha256':{f.name:sha(f) for f in out.iterdir() if f.name=='samples.json' or f.name.startswith(('frame-','contact-'))},

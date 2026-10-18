@@ -54,6 +54,7 @@ def generate(root):
     music=root/'fixture-music.wav';tone(music,15,110,False)
     write(root/'music.json',{'tracks':[{'id':'test-tone','file':music.name,'sha256':sha(music),'license':'MIT (programmatic test fixture)','license_url':'https://opensource.org/license/mit','detail_url':'workflow/demo.py','attribution_text':'Codex Video Studio original engineering test tone','modification_disclosure':'Trimmed, normalized and ducked for a technical test'}]})
     p['bgm']={'enabled':True,'catalog_file':'music.json','default_track':'test-tone','alternatives':[],'bed_lufs':-36,'fade_in_seconds':1,'fade_out_seconds':1}
+    p['audio_output']={'mode':'licensed_bgm'}
     write(ep/'episode.json',p);write(ep/'visual-plan.json',plan)
     from run import Workflow
     job=Workflow(ep/'episode.json');(job.run/'assets').mkdir(exist_ok=True)

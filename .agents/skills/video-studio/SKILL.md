@@ -18,12 +18,12 @@ Read the root `AGENTS.md`, project state if present, and [workflow](../../../doc
 
 ## Production
 
-1. Resolve brand, voice, rhythm, music, format and authorization from project defaults plus explicit episode overrides. Freeze inputs. Ask only about a material conflict, new expense outside the agreed scope, or a decision the user reserved.
+1. Resolve brand, voice, rhythm, audio output, format and authorization from project defaults plus explicit episode overrides. New projects default to narration only; licensed music remains optional. Freeze inputs. Ask only about a material conflict, new expense outside the agreed scope, or a decision the user reserved.
 2. Use `storyboard-director` to produce the semantic shot plan, method choices, actual task prompts and separate voice-direction handoff. Complete plan review before expensive batch generation.
 3. Follow [voice and provider guidance](../../../docs/providers.md). Preserve clean narration separately from the actual synthesis request. Obtain an independent rhythm review where available, then synthesize or ingest authorized local audio. Use measured timestamps to determine shot lengths.
 4. Produce each shot using its selected method. The image-generation tool is invoked by Codex when available; it is not a hidden feature of the Python renderer. Keep actual prompts, reference roles, outputs and hashes. Use accurate post-production text rather than hoping the image model spells labels correctly.
 5. Review real image compositions, set caption boxes, preview with the actual audio, then render using the runtime stages described in `python3 studio.py --help`. `validate` and a placeholder preview do not substitute for image review.
-6. Verify the final output and save [delivery](../../../templates/delivery.md), sources, attribution, technical results and any unperformed listening/viewing checks. Local delivery does not imply permission to publish.
+6. Verify the final output and complete [finishing and delivery](../../../docs/finishing-and-delivery.md): downloadable used-materials ZIP, authorized script-change comparison when needed, [delivery](../../../templates/delivery.md), sources, attribution and unperformed checks. Opening/endcard revisions use that same guide. Local delivery does not imply permission to publish.
 
 ## Evidence and fallback
 

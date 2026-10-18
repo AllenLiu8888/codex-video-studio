@@ -25,8 +25,8 @@ import wave
 
 from portable import project_root, resolve_font
 ROOT = project_root()
-VERSION = '2.1.0'
-UA = 'CodexVideoStudio/1.0 (local educational media research)'
+VERSION = '2.2.0'
+UA = 'CodexVideoStudio/1.1 (local educational media research)'
 
 
 def digest(value):
@@ -64,7 +64,10 @@ def clean_html(value):
 
 
 def validate(p):
-    if p.get('workflow_version') != '2.1.0': raise ValueError('Expected workflow_version 2.1.0')
+    if p.get('workflow_version') not in {'2.1.0', '2.2.0'}: raise ValueError('Expected workflow_version 2.1.0 or 2.2.0')
+    from finishing import audio_mode, opening_graph
+    audio_mode(p)
+    opening_graph(p, 'input', 'output')
     if not p.get('assets') or not p.get('sentences'):
         raise ValueError('Episode is only initialized; fill storyboard assets and narration sentences before production')
     if not re.fullmatch(r'[a-z0-9-]+', p['id']): raise ValueError('Episode ID must be kebab-case')
@@ -125,9 +128,9 @@ class Workflow:
             inputs['runtime_sha256'] = {name: filehash(Path(__file__).with_name(name)) for name in
                 ['run.py','visual_plan.py','media_assets.py','transitions.py','caption_motion.py',
                  'tts_minimax.py','local_audio.py','audio_direction.py','review_video.py','finishing.py','portable.py']}
-        from finishing import modern, music_signature
+        from finishing import modern, audio_signature
         if modern(self.p):
-            inputs['music']=music_signature(ROOT,self.p['bgm'])
+            inputs['audio_output']=audio_signature(ROOT,self.p)
             inputs['font_sha256']=filehash(self.brand['subtitle']['font_file'])
         self.input_manifest = inputs
         self.run = ROOT / 'runs' / (self.p['id'] + '-' + digest(inputs)[:10])
@@ -371,7 +374,7 @@ class Workflow:
                 'resolution':[w,h],'fps':fps,'validation':'pending_offline_layout_and_mix_review'})
             print('Film saved (not played):',self.run/'film.mp4',flush=True)
             return
-        raise ValueError('This public runtime requires workflow_version 2.1.0')
+        raise ValueError('This public runtime requires workflow_version 2.1.0 or 2.2.0')
 
     def verify(self):
         from finishing import release_gate
